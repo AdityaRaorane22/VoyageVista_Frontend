@@ -7,8 +7,7 @@
 ## Table of Contents
 
 - [Features](#features)  
-- [Tech Stack](#tech-stack)  
-- [Folder Structure](#folder-structure)  
+- [Tech Stack](#tech-stack)   
 - [Getting Started](#getting-started)  
 - [Environment Variables](#environment-variables)  
 - [Available Scripts](#available-scripts)  
@@ -35,34 +34,6 @@
 - **Backend Integration:** FastAPI backend (via REST API)  
 - **Styling:** CSS modules / custom CSS  
 - **Environment Management:** `.env` files  
-
----
-
-## Folder Structure
-
-
-
-src
-├── components
-│ └── Navbar.js
-├── context
-│ └── UserContext.js
-├── pages
-│ ├── Contact_Us.js
-│ ├── Dashboard.js
-│ ├── Home.js
-│ ├── ItineraryBuilder.js
-│ ├── Login.js
-│ ├── Pricing.js
-│ ├── Profile.js
-│ ├── Signup.js
-│ └── SuggestedTrips.js
-├── App.js
-└── index.js
-.env
-.gitignore
-package-lock.json
-package.json
 
 
 ---
@@ -132,3 +103,8 @@ Commit your changes: git commit -m "Add feature"
 Push to branch: git push origin feature/your-feature
 
 Create a Pull Request
+
+Author
+
+Email: adityanraorane@gmail.com
+Github: AdityaRaorane22
