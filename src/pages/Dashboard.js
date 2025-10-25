@@ -5,6 +5,9 @@ import { Routes, Route } from "react-router-dom";
 import ItineraryBuilder from "./ItineraryBuilder";
 import SuggestedTrips from "./SuggestedTrips";
 import Profile from "./Profile";
+import Pricing from "./Pricing";
+import Contact_Us from './Contact_Us';
+
 
 const DashboardHome = () => {
   const { userEmail } = useContext(UserContext);
