@@ -369,6 +369,8 @@ const Dashboard = () => {
         <Route path="itinerary" element={<ItineraryBuilder />} />
         <Route path="trips" element={<SuggestedTrips />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="pricing" element={<Pricing />} />
+        <Route path="contact" element={<Contact_Us />} />
       </Routes>
     </div>
   );
