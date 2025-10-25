@@ -5,7 +5,60 @@ import { useNavigate } from "react-router-dom";
 
 const SuggestedTrips = () => {
   const { userEmail } = useContext(UserContext);
-  const [trips, setTrips] = useState([]);
+  
+  // Default sample trips that will show if API fails or returns empty
+  const defaultTrips = [
+    {
+      destination: "Santorini, Greece",
+      image: "🏛️",
+      tagline: "Where white meets blue in perfect harmony",
+      highlights: [
+        "Iconic white-washed buildings with blue domes",
+        "Stunning sunset views in Oia",
+        "Volcanic beaches with unique black and red sand",
+        "Ancient ruins and archaeological sites"
+      ],
+      bestTime: "April to November (Peak: June-September)",
+      budget: "$150-300 per day for mid-range travelers",
+      idealFor: "Couples & Honeymooners",
+      mustTry: "Fresh seafood at sunset, wine tasting tours, and caldera cruises",
+      travelTip: "Book accommodation in Oia or Fira for the best views, but expect higher prices. Consider staying in Imerovigli for a quieter experience."
+    },
+    {
+      destination: "Kyoto, Japan",
+      image: "⛩️",
+      tagline: "Ancient temples meet modern zen",
+      highlights: [
+        "Thousands of vermillion torii gates at Fushimi Inari",
+        "Stunning bamboo groves in Arashiyama",
+        "Traditional geisha district in Gion",
+        "Beautiful zen gardens and historic temples"
+      ],
+      bestTime: "March-May (Cherry Blossoms) or October-November (Fall Colors)",
+      budget: "$100-200 per day including accommodation",
+      idealFor: "Culture Enthusiasts & Solo Travelers",
+      mustTry: "Authentic kaiseki dining, matcha tea ceremony, and early morning temple visits",
+      travelTip: "Get a one-day bus pass for unlimited travel. Visit popular spots like Fushimi Inari early morning or late evening to avoid crowds."
+    },
+    {
+      destination: "Patagonia, Argentina & Chile",
+      image: "🏔️",
+      tagline: "Where adventure meets untamed wilderness",
+      highlights: [
+        "Majestic Perito Moreno Glacier",
+        "Stunning Torres del Paine National Park",
+        "Incredible hiking trails and trekking routes",
+        "Unique wildlife including penguins and guanacos"
+      ],
+      bestTime: "November to March (Southern Hemisphere Summer)",
+      budget: "$120-250 per day depending on activities",
+      idealFor: "Adventure Seekers & Nature Lovers",
+      mustTry: "Multi-day W Trek, glacier hiking, and traditional Patagonian lamb BBQ",
+      travelTip: "Book accommodations and treks well in advance (3-6 months). Layer your clothing as weather changes rapidly. Torres del Paine requires entrance fees."
+    }
+  ];
+  
+  const [trips, setTrips] = useState(defaultTrips);
   const [isLoading, setIsLoading] = useState(true);
   const [stats, setStats] = useState(null);
   const navigate = useNavigate();
@@ -23,11 +76,16 @@ const SuggestedTrips = () => {
       const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/suggested-trips`, {
         email: userEmail
       });
-      if (res.data.success) {
+      if (res.data.success && res.data.trips && res.data.trips.length > 0) {
         setTrips(res.data.trips);
+      } else {
+        // Keep default trips if API returns empty
+        setTrips(defaultTrips);
       }
     } catch (err) {
       console.error("Error fetching trips:", err);
+      // Keep default trips on error
+      setTrips(defaultTrips);
     } finally {
       setIsLoading(false);
     }
